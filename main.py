@@ -19,10 +19,12 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  if "bord" in message.content:
+  mensagem = message.content.lower()
+
+  if "bord" in mensagem:
     await message.channel.send(random.choice(respostas))
 
-  elif message.content == "ta":
+  elif mensagem == "ta":
     await message.channel.send("borda")
 
 # Utilizado para enviar a mensagem programado no cronograma
