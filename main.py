@@ -1,7 +1,10 @@
 import discord
 import os
+import random
 
 client = discord.Client()
+
+respostas = ["TÁ!!!", "TÁ", "Bruno?", "NÃO", "Não", "Fingindo", "Parou", "Morre aqui"]
 
 @client.event
 async def on_ready():
@@ -13,7 +16,7 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  if message.content.startswith("bord"):
-    await message.channel.send("TÁ!!!")
+  if "bord" in message.content:
+    await message.channel.send(random.choice(respostas))
 
 client.run(os.getenv("TOKEN"))
