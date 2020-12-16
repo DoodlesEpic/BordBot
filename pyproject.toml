@@ -8,6 +8,8 @@ authors = ["repl.it user <replituser@example.com>"]
 python = "^3.8"
 discord = "^1.0.1"
 flask = "^1.1.2"
+schedule = "^0.6.0"
+asyncpg = "^0.21.0"
 
 [tool.poetry.dev-dependencies]
 
