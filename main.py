@@ -1,4 +1,5 @@
 import discord
+import os
 
 client = discord.Client()
 
@@ -14,3 +15,5 @@ async def on_message(message):
 
   if message.content.startswith("bord"):
     await message.channel.send("TÁ!!!")
+
+client.run(os.getenv("TOKEN"))
