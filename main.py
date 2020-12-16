@@ -24,9 +24,8 @@ async def on_ready():
     text = "333 CPF mas principalmente PM e PA, L e P, muito feliz, muito amigo, muito carinhoso, roupas, cabelos longos, lisos, bonitos, e , no ano do futuro DC."
 
     channel = discord.utils.get(client.get_all_channels(), name='geral')
-    text = text.strip()
 
-    print(f'Enviando `{text}` com cronograma `{interval.strip()}`')
+    print(f'Enviando `{text}` com cronograma `{interval}`')
     client.loop.create_task(falar(interval, channel, text))
   
   except Exception as e: 
