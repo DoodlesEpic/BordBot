@@ -45,7 +45,7 @@ async def on_ready():
   
   # Enviar a mensagem 333 todas as 3:33
   try:
-    interval = "33 3 * * *"
+    interval = "33 6 * * *"
     text = "333 CPF mas principalmente PM e PA, L e P, muito feliz, muito amigo, muito carinhoso, roupas, cabelos longos, lisos, bonitos, e , no ano do futuro DC."
 
     channel = discord.utils.get(client.get_all_channels(), name='geral')
