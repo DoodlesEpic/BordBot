@@ -5,7 +5,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-  print(f"BordBot inicializado como {client}");
+  print(f"BordBot inicializado como {client.user}");
 
 @client.event
 async def on_message(message):
