@@ -22,6 +22,9 @@ async def on_message(message):
   if "bord" in message.content:
     await message.channel.send(random.choice(respostas))
 
+  elif message.content == "ta":
+    await message.channel.send("borda")
+
 # Utilizado para enviar a mensagem programado no cronograma
 async def falar(interval, channel, text):
   await client.wait_until_ready()
@@ -42,7 +45,8 @@ async def falar(interval, channel, text):
 @client.event
 async def on_ready():
   print(f"BordBot inicializado como {client.user}");
-  
+  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="333"))
+
   # Enviar a mensagem 333 todas as 3:33
   try:
     interval = "33 6 * * *"
