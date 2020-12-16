@@ -1,6 +1,7 @@
 import discord
 import os
 import random
+from keepalive import keep_alive
 
 client = discord.Client()
 
@@ -19,4 +20,5 @@ async def on_message(message):
   if "bord" in message.content:
     await message.channel.send(random.choice(respostas))
 
+keep_alive()
 client.run(os.getenv("TOKEN"))
