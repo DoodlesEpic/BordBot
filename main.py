@@ -48,6 +48,9 @@ async def on_message(message):
   elif mensagem == "ta":
     await message.channel.send("borda")
 
+  elif mensagem == "book":
+    await message.channel.send("writer")
+
 # Utilizado para enviar a mensagem programado no cronograma
 async def falar(interval, channel, text):
   await client.wait_until_ready()
