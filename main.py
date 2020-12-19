@@ -10,7 +10,8 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 client = discord.Client()
-respostas = ["TÁ!!!", "TÁ", "Bruno?", "NÃO", "Não", "Fingindo", "Parou", "Morre aqui"]
+respostasBord = ["TÁ!!!", "TÁ", "bruno?", "nÃO", "não", "fingindo", "parou", "morre aqui", "melhor não"]
+respostasBrun = ["amiguin?", "amigo", "melhor não", "taborda"]
 
 # Configurar cronograma ao inicializar o bot
 @client.event
@@ -43,10 +44,52 @@ async def on_message(message):
   mensagem = message.content.lower()
 
   if "bord" in mensagem:
-    await message.channel.send(random.choice(respostas))
+    await message.channel.send(random.choice(respostasBord))
 
   elif "brun" in mensagem:
-    await message.channel.send("amiguin?")
+    await message.channel.send(random.choice(respostasBrun))
+
+  elif "11" in mensagem:
+    await message.channel.send("11 é desconhecido")
+
+  elif "12" in mensagem:
+    await message.channel.send("12 é fitness")
+
+  elif "13" in mensagem:
+    await message.channel.send("13 é petista")
+
+  elif "0" in mensagem:
+    await message.channel.send("0 é guardião supremo")
+
+  elif "1" in mensagem:
+    await message.channel.send("1 é normal") 
+
+  elif "2" in mensagem:
+    await message.channel.send("2 é bolinador") 
+
+  elif "3" in mensagem:
+    await message.channel.send("3 é bom")
+
+  elif "4" in mensagem:
+    await message.channel.send("4 é o número x")
+  
+  elif "5" in mensagem:
+    await message.channel.send("5 é guardião")
+
+  elif "6" in mensagem:
+    await message.channel.send("6 NAAAHHHHHH CHAMA O GUARDIÃO")
+
+  elif "7" in mensagem:
+    await message.channel.send("7 é amigo, mas já foi pior")
+
+  elif "8" in mensagem:
+    await message.channel.send("8 é criador")
+
+  elif "9" in mensagem:
+    await message.channel.send("9 é amarelo")
+
+  elif "10" in mensagem:
+    await message.channel.send("10 é médico")
 
   elif mensagem == "ta" or mensagem == "tá":
     await message.channel.send("borda")
