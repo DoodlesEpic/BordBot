@@ -45,7 +45,10 @@ async def on_message(message):
   if "bord" in mensagem:
     await message.channel.send(random.choice(respostas))
 
-  elif mensagem == "ta":
+  elif "brun" in mensagem:
+    await message.channel.send("amiguin?")
+
+  elif mensagem == "ta" or mensagem == "tá":
     await message.channel.send("borda")
 
   elif mensagem == "book":
