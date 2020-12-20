@@ -12,6 +12,7 @@ logging.basicConfig(level=logging.INFO)
 client = discord.Client()
 respostasBord = ["TÁ!!!", "TÁ", "bruno?", "nÃO", "não", "fingindo", "parou", "morre aqui", "melhor não"]
 respostasBrun = ["amiguin?", "amigo", "melhor não", "taborda"]
+respostasPun = ["punheteiro", "doente", "lek vai pesquisar na internet wtf", "não", "boobs", "de homem?"]
 
 # Configurar cronograma ao inicializar o bot
 @client.event
@@ -96,6 +97,9 @@ async def on_message(message):
 
   elif mensagem == "book":
     await message.channel.send("writer")
+
+  elif mensagem == "pls boobs":
+    await message.channel.send(random.choice(respostasPun))
 
 # Utilizado para enviar a mensagem programado no cronograma
 async def falar(interval, channel, text):
