@@ -84,7 +84,7 @@ async def falar(interval, channel, text):
   cron = CronTab(interval)
 
   while True:
-    await asyncio.sleep(cron.next())
+    await asyncio.sleep(cron.next(default_utc=True))
 
     try:
       print(f"Enviando {text} para {channel}")
