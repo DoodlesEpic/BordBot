@@ -72,13 +72,11 @@ async def on_message(message):
   # Encontrar substrings em mensagens enviadas
   for key in respostas:
     if key in mensagem:
-      await message.channel.send(random.choice(respostas[key]))
-      return
+      return await message.channel.send(random.choice(respostas[key]))
 
   # Encontrar mensagens que são exatamente iguais aos triggers
   if mensagem in respostasExatas:
-    await message.channel.send(random.choice(respostasExatas[mensagem]))
-    return
+    return await message.channel.send(random.choice(respostasExatas[mensagem]))
 
 # Utilizado para enviar a mensagem programado no cronograma
 async def falar(interval, channel, text):
