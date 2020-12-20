@@ -10,9 +10,34 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 client = discord.Client()
-respostasBord = ["TÁ!!!", "TÁ", "bruno?", "nÃO", "não", "fingindo", "parou", "morre aqui", "melhor não"]
-respostasBrun = ["amiguin?", "amigo", "melhor não", "taborda"]
-respostasPun = ["punheteiro", "doente", "lek vai pesquisar na internet wtf", "não", "boobs", "de homem?"]
+
+# A key deve estar contida na mensagem para ser escolhida uma resposta
+respostas = {
+  "bord": ["TÁ!!!", "TÁ", "bruno?", "nÃO", "não", "fingindo", "parou", "morre aqui", "melhor não"],
+  "brun": ["amiguin?", "amigo", "melhor não", "taborda"],
+  "11": ["11 é desconhecido"],
+  "12": ["12 é fitness"],
+  "13": ["13 é petista"],
+  "0": ["0 é guardião supremo"],
+  "1": ["1 é normal"],
+  "2": ["2 é bolinador"],
+  "3": ["3 é bom"],
+  "4": ["4 é x"],
+  "5": ["5 é guardião supremo"],
+  "6": ["6 NAAAHHHHHH CHAMA O GUARDIÃO"],
+  "7": ["7 é amigo, mas já foi pior"],
+  "8": ["8 é criador"],
+  "9": ["9 é amarelo"],
+  "10": ["10 é médico"],
+}
+
+# A mensagem deve ser exatamente igual a key para ser escolhida uma resposta
+respostasExatas = {
+  "ta": ["borda"],
+  "tá": ["borda"],
+  "book": ["writer"],
+  "pls boobs": ["punheteiro", "doente", "lek vai pesquisar na internet wtf", "não", "boobs", "de homem?"],
+}
 
 # Configurar cronograma ao inicializar o bot
 @client.event
@@ -44,62 +69,16 @@ async def on_message(message):
 
   mensagem = message.content.lower()
 
-  if "bord" in mensagem:
-    await message.channel.send(random.choice(respostasBord))
+  # Encontrar substrings em mensagens enviadas
+  for key in respostas:
+    if key in mensagem:
+      await message.channel.send(random.choice(respostas[key]))
+      return
 
-  elif "brun" in mensagem:
-    await message.channel.send(random.choice(respostasBrun))
-
-  elif "11" in mensagem:
-    await message.channel.send("11 é desconhecido")
-
-  elif "12" in mensagem:
-    await message.channel.send("12 é fitness")
-
-  elif "13" in mensagem:
-    await message.channel.send("13 é petista")
-
-  elif "0" in mensagem:
-    await message.channel.send("0 é guardião supremo")
-
-  elif "1" in mensagem:
-    await message.channel.send("1 é normal") 
-
-  elif "2" in mensagem:
-    await message.channel.send("2 é bolinador") 
-
-  elif "3" in mensagem:
-    await message.channel.send("3 é bom")
-
-  elif "4" in mensagem:
-    await message.channel.send("4 é o número x")
-  
-  elif "5" in mensagem:
-    await message.channel.send("5 é guardião")
-
-  elif "6" in mensagem:
-    await message.channel.send("6 NAAAHHHHHH CHAMA O GUARDIÃO")
-
-  elif "7" in mensagem:
-    await message.channel.send("7 é amigo, mas já foi pior")
-
-  elif "8" in mensagem:
-    await message.channel.send("8 é criador")
-
-  elif "9" in mensagem:
-    await message.channel.send("9 é amarelo")
-
-  elif "10" in mensagem:
-    await message.channel.send("10 é médico")
-
-  elif mensagem == "ta" or mensagem == "tá":
-    await message.channel.send("borda")
-
-  elif mensagem == "book":
-    await message.channel.send("writer")
-
-  elif mensagem == "pls boobs":
-    await message.channel.send(random.choice(respostasPun))
+  # Encontrar mensagens que são exatamente iguais aos triggers
+  if mensagem in respostasExatas:
+    await message.channel.send(random.choice(respostasExatas[mensagem]))
+    return
 
 # Utilizado para enviar a mensagem programado no cronograma
 async def falar(interval, channel, text):
