@@ -15,6 +15,7 @@ client = discord.Client()
 respostas = {
   "bord": ["TÁ!!!", "TÁ", "bruno?", "nÃO", "não", "fingindo", "parou", "morre aqui", "melhor não"],
   "brun": ["amiguin?", "amigo", "melhor não", "taborda"],
+  "10": ["10 é médico"],
   "11": ["11 é desconhecido"],
   "12": ["12 é fitness"],
   "13": ["13 é petista"],
@@ -28,7 +29,6 @@ respostas = {
   "7": ["7 é amigo, mas já foi pior"],
   "8": ["8 é criador"],
   "9": ["9 é amarelo"],
-  "10": ["10 é médico"],
 }
 
 # A mensagem deve ser exatamente igual a key para ser escolhida uma resposta
