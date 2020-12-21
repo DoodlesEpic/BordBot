@@ -3,8 +3,9 @@ import discord
 import os
 import random
 import traceback
-from keepalive import keep_alive
+from server import keep_alive
 from crontab import CronTab
+from replit import db
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -48,12 +49,11 @@ async def on_ready():
   # Enviar a mensagem 333 todas as 3:33
   try:
     interval = "33 6,18 * * *"
-    text = "333 CPF mas principalmente PM e PA, L e P, muito feliz, muito amigo, muito carinhoso, roupas, cabelos longos, lisos, bonitos, e sedosos, no ano do futuro DC."
-
+    mensagem = db["mensagem-bot"]
     channel = discord.utils.get(client.get_all_channels(), name='geral')
 
-    print(f'Enviando `{text}` com cronograma `{interval}`')
-    client.loop.create_task(falar(interval, channel, text))
+    print(f'Enviando `{mensagem}` com cronograma `{interval}`')
+    client.loop.create_task(falar(interval, channel))
   
   except Exception as e: 
     print('Não foi possível configurar o timer 333.')
@@ -79,19 +79,20 @@ async def on_message(message):
     return await message.channel.send(random.choice(respostasExatas[mensagem]))
 
 # Utilizado para enviar a mensagem programado no cronograma
-async def falar(interval, channel, text):
+async def falar(interval, channel):
   await client.wait_until_ready()
   cron = CronTab(interval)
 
   while True:
     await asyncio.sleep(cron.next(default_utc=True))
+    mensagem = db["mensagem-bot"]
 
     try:
-      print(f"Enviando {text} para {channel}")
-      await channel.send(text)
+      print(f"Enviando {mensagem} para {channel}")
+      await channel.send(mensagem)
 
     except Exception as e: 
-      print(f'Não deu pra enviar `{text}` para `{channel}` :(')
+      print(f'Não deu pra enviar `{mensagem}` para `{channel}` :(')
       print(e)
 
 keep_alive()
